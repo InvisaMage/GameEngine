@@ -56,12 +56,12 @@ class Character(object):
     @property
     def strBonus(self):
         ''' calculates d20 OGL bonus for strength'''
-        return (self.dexterity//2) - 5
+        return (self.strength//2) - 5
 
     @property
     def dexBonus(self):
         ''' calculates d20 OGL bonus for dexterity'''
-        return (self.strength//2) - 5
+        return (self.dexterity//2) - 5
 
     @property
     def intBonus(self):
@@ -187,21 +187,3 @@ if __name__ == "__main__":
     hero.heal()
     print(hero.potionList)
     print(hero.attack(orc))
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
