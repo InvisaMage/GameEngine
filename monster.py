@@ -41,7 +41,10 @@ class Monster(Character):
         if attackValue >= healValue and attackValue >= fleeValue:
             return "a"
         elif healValue >= attackValue and healValue >= fleeValue:
-            return "h"
+            if self.health < self.maxHealth:
+                return "h"
+            else:
+                return "a"
         elif fleeValue >= attackValue and fleeValue >= healValue:
             return "f"
         else:
@@ -110,6 +113,50 @@ class Imp(Monster):
                                   intelligence, dexterity, numberOfPotions,
                                   inventory, aggression, awareness, fear)
 
+class Wizard(Monster):
+    ''' generic Wizard class
+
+    Smart, resourceful, fit
+    '''
+    def __init__(self,
+                 name = "The West Wizard",
+                 maxHealth = 10,
+                 speed = 50,
+                 stamina = 50,
+                 strength = 15,
+                 intelligence = 100,
+                 dexterity = 20,
+                 numberOfPotions = 8,
+                 inventory = ['Stave'],
+                 aggression = 30,
+                 awareness = 100,
+                 fear = 0):
+        super(Wizard, self).__init__(name, maxHealth, speed, stamina, strength,
+                                  intelligence, dexterity, numberOfPotions,
+                                  inventory, aggression, awareness, fear)
+
+class Dwarf(Monster):
+    ''' generic Dwarf class
+
+    Strong, 
+    '''
+    def __init__(self,
+                 name = "Diligent Dwarf",
+                 maxHealth = 10,
+                 speed = 25,
+                 stamina = 25,
+                 strength = 80,
+                 intelligence = 100,
+                 dexterity = 20,
+                 numberOfPotions = 2,
+                 inventory = [],
+                 aggression = 50,
+                 awareness = 100,
+                 fear = 0):
+        super(Dwarf, self).__init__(name, maxHealth, speed, stamina, strength,
+                                  intelligence, dexterity, numberOfPotions,
+                                  inventory, aggression, awareness, fear)
+
 def random_monster():
     '''generate a monster at random
 
@@ -121,10 +168,11 @@ def random_monster():
     orc = Orc()
     knight = Knight()
     imp = Imp()
+    wizard = Wizard()
+    dwarf = Dwarf()
     
-    listOfMonsters = [monster, orc, knight, imp]
+    listOfMonsters = [monster, orc, knight, imp, wizard, dwarf]
     return choice(listOfMonsters)
-
 
 if __name__ == "__main__":
 

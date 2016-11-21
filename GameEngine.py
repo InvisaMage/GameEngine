@@ -16,7 +16,7 @@ def combat(one, two):
             current is the one doing the action, choice is the chosen action,
             target is the opponent who could be attacked. The function returns
             a Boolean, which indicates whether to end the combat loop.'''
-        
+
         isOver = False
         
         if choice == "f":
@@ -24,6 +24,10 @@ def combat(one, two):
             
         elif choice == "h":
             success, message = current.heal() #This has no effect on the loop
+
+        elif choice == "s": #Check your stats
+            message = print("Health:", one.health, "\n " + "Potions:",
+                            one.numberOfPotions)
             
         else:
             success, message = current.attack(target)
@@ -39,6 +43,7 @@ def combat(one, two):
     ''' combat function begins here'''    
     combatIsOver = False
     rounds = 0
+    print("You have a quarrel with,", two.name + ".")
     while not combatIsOver:
         rounds +=1
         print("\nRound", rounds, "begins...")
@@ -63,5 +68,7 @@ if __name__ == "__main__":
     orc = Monster(name = "Dorque da Orc")
     knight = Monster(name = "The Keen Knight")
     imp = Monster(name = "Impish Imp")
+    wizard = Monster(name = "The West Wizard")
+    dwarf = Monster(name = "Diligent Dwarf")
 
-    combat(hero, knight)
+    combat(hero, random_monster())

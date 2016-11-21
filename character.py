@@ -176,7 +176,8 @@ class Character(object):
                      A)ttack
                      H)eal
                      F)lee
-                   Your Choice [A/h/f]: """)
+                     S)tats
+                   Your Choice [A/h/f/s]: """)
         return choice
 
 if __name__ == "__main__":
